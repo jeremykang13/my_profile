@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>프로젝트 상세 | 강병무</title>
+<meta name="description" content="강병무 포트폴리오 프로젝트 상세 페이지">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html#top">강병무</a>
+    <nav class="main-nav">
+      <a href="index.html#about">철학</a>
+      <a href="index.html#work">일하는 방식</a>
+      <a href="index.html#projects">프로젝트</a>
+      <a href="index.html#career">경력</a>
+      <a href="index.html#person">사람</a>
+      <a href="index.html#contact">연락</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="메뉴 열기" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="detail">
+    <div class="wrap detail-wrap">
+      <a class="back-link" href="index.html#projects">← 프로젝트 목록</a>
+
+      <div class="detail-head">
+        <span class="detail-cat" id="detailCat"></span>
+        <h1 id="detailTitle"></h1>
+        <div class="tags" id="detailTags"></div>
+      </div>
+
+      <div class="detail-cover">
+        <img id="detailCover" src="" alt="">
+      </div>
+
+      <div class="detail-body" id="detailBody"></div>
+
+      <div class="stat-grid" id="detailStats" hidden></div>
+
+      <nav class="detail-pagenav">
+        <a id="prevProject" class="pagenav-link" hidden>← 이전 프로젝트</a>
+        <a id="nextProject" class="pagenav-link" hidden>다음 프로젝트 →</a>
+      </nav>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Kang Byungmoo. 브랜드의 철학을 사유하고 정립합니다.</p>
+  </div>
+</footer>
+
+<script src="js/projects-data.js"></script>
+<script src="js/project.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
