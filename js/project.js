@@ -13,6 +13,11 @@
 
   document.title = project.title + ' | 강병무';
 
+  // 목록으로 돌아갈 때 이 프로젝트가 속한 역할 섹션으로 이동
+  var backLink = document.querySelector('.back-link');
+  var roleAnchor = { strategy: 'strategist', concept: 'concept', content: 'creator', community: 'community' }[project.category];
+  if (backLink && roleAnchor) backLink.href = 'work.html#' + roleAnchor;
+
   document.getElementById('detailCat').textContent = project.catLabel;
 
   document.getElementById('detailTitle').textContent = project.title;
@@ -25,11 +30,25 @@
   });
 
   var coverEl = document.getElementById('detailCover');
-  coverEl.src = project.cover;
-  coverEl.alt = project.title;
+  if (project.cover) {
+    coverEl.src = project.cover;
+    coverEl.alt = project.title;
+  } else {
+    document.querySelector('.detail-cover').hidden = true;
+  }
 
   var bodyEl = document.getElementById('detailBody');
-  project.body.forEach(function (block) {
+
+  function makeImg(src, alt) {
+    var img = document.createElement('img');
+    img.src = src;
+    img.alt = alt || '';
+    img.loading = 'lazy';
+    return img;
+  }
+
+  // 본문 블록 하나를 그린다: p / h / list / img / gallery
+  function renderBlock(block) {
     if (block.h) {
       var h = document.createElement('h3');
       h.textContent = block.h;
@@ -38,6 +57,37 @@
       var p = document.createElement('p');
       p.innerHTML = block.p;
       bodyEl.appendChild(p);
+    } else if (block.img) {
+      var fig = document.createElement('figure');
+      fig.className = 'body-img';
+      fig.appendChild(makeImg(block.img, block.alt));
+      bodyEl.appendChild(fig);
+    } else if (block.gallery) {
+      var grid = document.createElement('div');
+      grid.className = 'body-gallery';
+      grid.setAttribute('data-n', String(block.gallery.length));
+      block.gallery.forEach(function (item) {
+        var cell = document.createElement('figure');
+        var inner = makeImg(item.img, item.alt);
+        if (item.url) {
+          var a = document.createElement('a');
+          a.href = item.url;
+          a.target = '_blank';
+          a.rel = 'noopener';
+          a.setAttribute('aria-label', (item.cap || item.alt || '') + ' (새 탭에서 열기)');
+          a.appendChild(inner);
+          cell.appendChild(a);
+        } else {
+          cell.appendChild(inner);
+        }
+        if (item.cap) {
+          var cap = document.createElement('figcaption');
+          cap.textContent = item.cap;
+          cell.appendChild(cap);
+        }
+        grid.appendChild(cell);
+      });
+      bodyEl.appendChild(grid);
     } else if (block.list) {
       var ul = document.createElement('ul');
       ul.className = 'body-list';
@@ -46,17 +96,31 @@
         if (typeof item === 'string') {
           li.textContent = item;
         } else {
-          var a = document.createElement('a');
-          a.href = item.url;
-          a.target = '_blank';
-          a.rel = 'noopener';
-          a.textContent = item.text;
-          li.appendChild(a);
+          var link = document.createElement('a');
+          link.href = item.url;
+          link.target = '_blank';
+          link.rel = 'noopener';
+          link.textContent = item.text;
+          li.appendChild(link);
         }
         ul.appendChild(li);
       });
       bodyEl.appendChild(ul);
     }
+  }
+
+  // 원본 본문 블록 사이에 projects-media.js의 이미지를 끼워 넣는다 (at: 원본 블록 번호 뒤)
+  var media = (typeof PROJECT_MEDIA !== 'undefined' && PROJECT_MEDIA[project.slug]) || [];
+  function renderMedia(at) {
+    media.forEach(function (m) {
+      if (m.at === at) m.blocks.forEach(renderBlock);
+    });
+  }
+
+  renderMedia(-1);
+  project.body.forEach(function (block, i) {
+    renderBlock(block);
+    renderMedia(i);
   });
 
   if (project.stats && project.stats.length) {

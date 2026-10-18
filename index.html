@@ -3,32 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101010" media="(prefers-color-scheme: dark)">
+<script>(function(){var d=document.documentElement;d.className+=" js";try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")d.setAttribute("data-theme",t);}catch(e){}})();</script>
 <title>강병무 포트폴리오 | 브랜드의 철학을 기획하는 사람</title>
-<meta name="description" content="브랜드의 철학을 사유하고 정립하는 기획자 강병무의 포트폴리오. 브랜딩 전략, 콘텐츠 기획, 커뮤니티 기획.">
+<meta name="description" content="브랜드의 철학을 사유하고 정립하는 기획자 강병무의 포트폴리오. 일의 결, 삶의 결.">
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<header class="site-header">
-  <div class="wrap header-inner">
-    <a class="brand" href="#top">강병무</a>
-    <nav class="main-nav">
-      <a href="#about">철학</a>
-      <a href="#work">일하는 방식</a>
-      <a href="#projects">프로젝트</a>
-      <a href="#career">경력</a>
-      <a href="#person">사람</a>
-      <a href="#contact">연락</a>
-    </nav>
-    <button class="nav-toggle" id="navToggle" aria-label="메뉴 열기" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
+<div id="sidebar"></div>
+<noscript>
+  <nav class="noscript-nav">
+    <a href="index.html">Home</a> <a href="work.html">Philosophy &amp; Work</a> <a href="career.html">Career</a>
+    <a href="life.html">Life</a> <a href="contact.html">Contact</a>
+  </nav>
+</noscript>
 
+<div class="page">
 <main id="top">
 
+  <!-- 1막 선언: 일과 삶을 첫 화면에서 동시에 -->
   <section class="hero">
     <div class="wrap hero-grid">
       <div class="hero-copy">
@@ -40,9 +36,13 @@
           좋은 철학을 갖고 싶지만, 경쟁이라는 압박감 속에 이를 사유할 여유가 없는 브랜드에게
           철학을 만들어주는 일을 합니다.
         </p>
+        <dl class="hero-two reveal">
+          <div><dt>일의 결</dt><dd>브랜드의 철학을 사유하고 정립하는 기획자</dd></div>
+          <div><dt>삶의 결</dt><dd>기록하고, 함께 땀 흘리고, 자연에서 쉬며, 다름을 존중하는 사람</dd></div>
+        </dl>
         <div class="hero-cta reveal">
-          <a class="btn btn-primary" href="#projects">프로젝트 보기</a>
-          <a class="btn btn-ghost" href="#contact">연락하기</a>
+          <a class="btn btn-primary" href="work.html">일의 결 보기</a>
+          <a class="btn btn-ghost" href="life.html">삶의 결 보기</a>
         </div>
       </div>
       <div class="hero-photo reveal">
@@ -51,218 +51,69 @@
     </div>
   </section>
 
-  <section class="clients">
+  <!-- 2막 왜: 철학 -->
+  <section id="why" class="about">
     <div class="wrap">
-      <p class="clients-label">함께해온 곳들</p>
-      <ul class="clients-list">
-        <li>서울관광재단</li>
-        <li>한국GM 쉐보레</li>
-        <li>외교부</li>
-        <li>방송통신위원회</li>
-        <li>주식회사 해리</li>
-        <li>갤럭시아 SM</li>
-        <li>스포츠 MNM</li>
-        <li>경남FC</li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="about" class="about">
-    <div class="wrap">
-      <h2 class="section-title reveal"><span class="num">01</span>철학</h2>
+      <p class="act-label reveal">Philosophy</p>
+      <p class="big-quote reveal">좋은 철학은 소통과 <span>선한 영향력</span>을 이끄는 창구가 됩니다.</p>
       <p class="about-text reveal">
         현대의 우리는 서로가 가진 ‘철학’을 공유하고 공감을 나누는 시대 속에 살아가고 있습니다.
-        뚜렷하고 명확한 철학을 가진, ‘닮아가고 싶은’ 사람 혹은 브랜드에 열광하고 지지를 보내며,
-        이들과 소통하는 데 거리낌이 없습니다. 좋은 철학은 소통과 선한 영향력을 이끄는 창구가 됩니다.
+        뚜렷하고 명확한 철학을 가진, ‘닮아가고 싶은’ 사람 혹은 브랜드에 열광하고 지지를 보냅니다.
       </p>
-      <p class="about-text reveal">
-        저는 좋은 철학을 가지고 싶지만, 현생에 처한 경쟁이라는 압박감으로 이를 사유할 여유가 없는
-        브랜드에게 철학을 만들어 주는 기획 일을 하고 있습니다.
-      </p>
+      <p class="more-link reveal"><a href="work.html#philosophy">철학 더 읽기 →</a></p>
     </div>
   </section>
 
-  <section id="work" class="roles">
+  <!-- 3막 일: 철학적 소양 (네 가지 페르소나를 나열, 순서·단계 없음) -->
+  <section id="work" class="projects">
     <div class="wrap">
-      <h2 class="section-title reveal"><span class="num">02</span>일하는 방식</h2>
+      <p class="act-label reveal">Work</p>
+      <h2 class="section-title reveal">일의 결</h2>
 
-      <div class="role-tabs reveal">
-        <button class="role-tab is-active" data-role="strategy">브랜딩 전략가</button>
-        <button class="role-tab" data-role="content">콘텐츠 창작자</button>
-        <button class="role-tab" data-role="community">커뮤니티 기획자</button>
+      <div class="persona">
+        <h3 class="persona-title reveal">철학적 소양</h3>
+        <p class="persona-lead reveal">좋은 철학을 사유하기 위해, 저는 네 가지 페르소나로 일합니다.</p>
+        <ul class="persona-list">
+          <li class="persona-item reveal">
+            <a href="work.html#strategist">
+              <strong class="persona-name">브랜딩 전략가</strong>
+              <span class="persona-desc">시장과 소비자를 분석해 커뮤니케이션 전략을 수립합니다.</span>
+              <span class="persona-proj">대표 프로젝트 · 한국GM 쉐보레 소셜 채널 운영 제안</span>
+            </a>
+          </li>
+          <li class="persona-item reveal">
+            <a href="work.html#concept">
+              <strong class="persona-name">컨셉 구현자</strong>
+              <span class="persona-desc">브랜드가 고객에게 닿고자 하는 컨셉을 콘텐츠와 채널 운영 전반에 일관되게 구현합니다.</span>
+              <span class="persona-proj">대표 프로젝트 · 진로 동남아 마켓 소셜 채널 운영</span>
+            </a>
+          </li>
+          <li class="persona-item reveal">
+            <a href="work.html#creator">
+              <strong class="persona-name">콘텐츠 창작자</strong>
+              <span class="persona-desc">브랜드가 들려주고 싶은 이야기를 온라인 사용자의 화법으로 만듭니다.</span>
+              <span class="persona-proj">대표 프로젝트 · 암스트롱 챌린지 기획</span>
+            </a>
+          </li>
+          <li class="persona-item reveal">
+            <a href="work.html#community">
+              <strong class="persona-name">커뮤니티 기획자</strong>
+              <span class="persona-desc">‘같이’의 ‘가치’를 믿고, 함께 사유하고 나누는 활동을 기획합니다.</span>
+              <span class="persona-proj">대표 프로젝트 · 위고 서포터즈 운영</span>
+            </a>
+          </li>
+        </ul>
       </div>
 
-      <div class="role-panel is-active" data-role-panel="strategy">
-        <p class="role-desc">
-          브랜드가 처한 시장의 상황, 소비자의 행동 패턴을 분석하여 커뮤니케이션 전략을 수립합니다.
-          공감하기 어려운, 객관성이 결여된 기획이 아닌 시장과 소비자에 관한 정량적인 수치를 분석하고,
-          데이터를 근거로 한 정성 분석으로 브랜드가 공감할 수 있는 기획을 진행하고 있습니다.
-        </p>
-      </div>
-      <div class="role-panel" data-role-panel="content">
-        <p class="role-desc">
-          이야기를 통해 세상과 소통하는 과정에서 즐거움을 느낍니다. 이야기를 듣고 들려주는 과정 속에
-          공감과 교감이 발생합니다. 이렇게 세상을 연결하는 매개체인 이야기를 만들고 있습니다.
-          브랜드가 들려주고 싶은 이야기를 온라인 사용자의 화법으로 만들어낸 콘텐츠를 창작하고 있습니다.
-        </p>
-      </div>
-      <div class="role-panel" data-role-panel="community">
-        <p class="role-desc">
-          아프리카 마사이족의 속담 중 ‘혼자 가면 빨리 가고, 함께 가면 멀리 간다’라는 말이 있습니다.
-          저는 커뮤니티가 주는 ‘같이’의 ‘가치’를 믿고 있습니다. 사람과 사람이 만나 더 나은 사회를
-          만들기 위해 선한 영향력을 행사하는 공동체를 꿈꾸며, 함께 사유하고 나누는 활동을 기획합니다.
-        </p>
-      </div>
+      <p class="more-link reveal"><a href="work.html">Philosophy &amp; Work 전체 보기 →</a></p>
     </div>
   </section>
 
-  <section id="projects" class="projects">
+  <!-- 4막 삶: 삶의 결 + 쓴 글 -->
+  <section id="life" class="person">
     <div class="wrap">
-      <h2 class="section-title reveal"><span class="num">03</span>프로젝트</h2>
-
-      <div class="filter-bar reveal">
-        <button class="filter-btn is-active" data-filter="all">전체</button>
-        <button class="filter-btn" data-filter="strategy">브랜딩 전략가</button>
-        <button class="filter-btn" data-filter="content">콘텐츠 창작자</button>
-        <button class="filter-btn" data-filter="community">커뮤니티 기획자</button>
-      </div>
-
-      <div class="project-grid">
-
-        <a class="project-card reveal" data-cat="strategy" href="project.html?id=chevrolet-social">
-          <img class="project-cover" src="assets/projects/chevrolet-social.png" alt="한국GM 쉐보레 소셜 채널 운영 제안" loading="lazy">
-          <h3>한국GM 쉐보레 소셜 채널 운영 제안</h3>
-          <div class="tags"><span>브랜딩</span><span>제안</span><span>전략기획</span></div>
-        </a>
-        <a class="project-card reveal" data-cat="strategy" href="project.html?id=visitseoul-sns">
-          <img class="project-cover" src="assets/projects/visitseoul-sns.png" alt="2023 비짓서울 SNS 운영 활성화 제안" loading="lazy">
-          <h3>2023 비짓서울 SNS 운영 활성화 제안</h3>
-          <div class="tags"><span>브랜딩</span><span>제안</span><span>전략기획</span></div>
-        </a>
-        <a class="project-card reveal" data-cat="strategy" href="project.html?id=kwellness-youtube">
-          <img class="project-cover" src="assets/projects/kwellness-youtube.png" alt="2023 의료웰니스 유튜브 운영 제안" loading="lazy">
-          <h3>2023 의료웰니스 유튜브 운영 제안</h3>
-          <div class="tags"><span>영상기획</span><span>제안</span><span>유튜브</span></div>
-        </a>
-        <a class="project-card reveal" data-cat="strategy" href="project.html?id=hanjin-gift">
-          <img class="project-cover" src="assets/projects/hanjin-gift.png" alt="한진 내지갑속선물 홍보 마케팅 제안" loading="lazy">
-          <h3>한진 내지갑속선물 홍보 마케팅 제안</h3>
-          <div class="tags"><span>브랜딩</span><span>제안</span><span>통합마케팅</span></div>
-        </a>
-        <a class="project-card reveal" data-cat="strategy" href="project.html?id=seoul-hallyu">
-          <img class="project-cover" src="assets/projects/seoul-hallyu.png" alt="서울 한류관광 및 M.V.P 코스 활성화 사업 제안" loading="lazy">
-          <h3>서울 한류관광 및 M.V.P 코스 활성화 사업 제안</h3>
-          <div class="tags"><span>SNS</span><span>콘텐츠기획</span><span>크리에이터</span></div>
-        </a>
-        <a class="project-card reveal" data-cat="strategy" href="project.html?id=usfk-relations">
-          <img class="project-cover" src="assets/projects/usfk-relations.png" alt="한미 민군관계 개선 SNS 채널 및 서포터즈 운영 제안" loading="lazy">
-          <h3>한미 민군관계 개선 SNS 채널 및 서포터즈 운영 제안</h3>
-          <div class="tags"><span>SNS</span><span>콘텐츠기획</span><span>제안</span></div>
-        </a>
-
-        <a class="project-card reveal" data-cat="content" href="project.html?id=korea-us-alliance">
-          <img class="project-cover" src="assets/projects/korea-us-alliance.png" alt="한미동맹 인식개선 콘텐츠 기획" loading="lazy">
-          <h3>한미동맹 인식개선 콘텐츠 기획</h3>
-          <div class="tags"><span>SNS</span><span>영상</span><span>메타버스</span></div>
-        </a>
-        <a class="project-card reveal" data-cat="content" href="project.html?id=kcc-content">
-          <img class="project-cover" src="assets/projects/kcc-content.png" alt="방송통신위원회 정책홍보 콘텐츠 기획" loading="lazy">
-          <h3>방송통신위원회 정책홍보 콘텐츠 기획</h3>
-          <div class="tags"><span>영상</span><span>웹툰</span><span>이미지</span></div>
-        </a>
-        <a class="project-card reveal" data-cat="content" href="project.html?id=armstrong-challenge">
-          <img class="project-cover" src="assets/projects/armstrong-challenge.png" alt="한국보건산업진흥원 암스트롱 챌린지 기획" loading="lazy">
-          <h3>한국보건산업진흥원 암스트롱 챌린지 기획</h3>
-          <div class="tags"><span>캠페인</span><span>릴레이챌린지</span><span>SNS</span></div>
-        </a>
-        <a class="project-card reveal" data-cat="content" href="project.html?id=goyang-orion">
-          <img class="project-cover" src="assets/projects/goyang-orion.png" alt="고양 오리온 프로 농구단 공식 SNS 콘텐츠 기획" loading="lazy">
-          <h3>고양 오리온 프로 농구단 공식 SNS 콘텐츠 기획</h3>
-          <div class="tags"><span>영상</span><span>이미지</span><span>SNS</span></div>
-        </a>
-        <a class="project-card reveal" data-cat="content" href="project.html?id=billiards-tv">
-          <img class="project-cover" src="assets/projects/billiards-tv.png" alt="빌리어즈TV SNS 콘텐츠 기획" loading="lazy">
-          <h3>빌리어즈TV SNS 콘텐츠 기획</h3>
-          <div class="tags"><span>영상</span><span>이미지</span><span>SNS</span></div>
-        </a>
-        <a class="project-card reveal" data-cat="content" href="project.html?id=kakao-1boon">
-          <img class="project-cover" src="assets/projects/kakao-1boon.png" alt="카카오 1boon 콘텐츠 기획" loading="lazy">
-          <h3>카카오 1boon 콘텐츠 기획</h3>
-          <div class="tags"><span>기사</span><span>블로그</span><span>포털</span></div>
-        </a>
-
-        <a class="project-card reveal" data-cat="community" href="project.html?id=wego-supporters">
-          <img class="project-cover" src="assets/projects/wego-supporters.png" alt="한미동맹 커뮤니티 위고 서포터즈 운영" loading="lazy">
-          <h3>한미동맹 커뮤니티 위고 서포터즈 운영</h3>
-          <div class="tags"><span>서포터즈</span><span>외교부</span></div>
-        </a>
-        <a class="project-card reveal" data-cat="community" href="project.html?id=kcc-reporters">
-          <img class="project-cover" src="assets/projects/kcc-reporters.png" alt="방송통신위원회 정책기자단 운영" loading="lazy">
-          <h3>방송통신위원회 정책기자단 운영</h3>
-          <div class="tags"><span>서포터즈</span><span>방통위</span></div>
-        </a>
-        <a class="project-card reveal" data-cat="community" href="project.html?id=gyeongnamfc-team">
-          <img class="project-cover" src="assets/projects/gyeongnamfc-team.png" alt="경남FC 프로축구단 선수단 관리" loading="lazy">
-          <h3>경남FC 프로축구단 선수단 관리</h3>
-          <div class="tags"><span>팀매니저</span><span>경남FC</span></div>
-        </a>
-
-      </div>
-    </div>
-  </section>
-
-  <section id="career" class="career">
-    <div class="wrap">
-      <h2 class="section-title reveal"><span class="num">04</span>경력</h2>
-      <ol class="timeline">
-        <li class="reveal">
-          <span class="tl-period">현재</span>
-          <span class="tl-role">서울관광재단</span>
-          <span class="tl-desc">소셜미디어 커뮤니케이션 전략 기획자</span>
-        </li>
-        <li class="reveal">
-          <span class="tl-period">현재</span>
-          <span class="tl-role">한국GM 쉐보레</span>
-          <span class="tl-desc">소셜미디어 커뮤니케이션 전략 기획자</span>
-        </li>
-        <li class="reveal">
-          <span class="tl-period">현재</span>
-          <span class="tl-role">외교부 북미국</span>
-          <span class="tl-desc">민군관계 인식 개선 브랜딩 책임</span>
-        </li>
-        <li class="reveal">
-          <span class="tl-period">현재</span>
-          <span class="tl-role">방송통신위원회</span>
-          <span class="tl-desc">온라인 콘텐츠 제작 책임</span>
-        </li>
-        <li class="reveal">
-          <span class="tl-period">2020 – 2023</span>
-          <span class="tl-role">주식회사 해리</span>
-          <span class="tl-desc">온라인 커뮤니케이션 AE</span>
-        </li>
-        <li class="reveal">
-          <span class="tl-period">2019 – 2020</span>
-          <span class="tl-role">갤럭시아 SM</span>
-          <span class="tl-desc">스포츠 문화 기획 AE</span>
-        </li>
-        <li class="reveal">
-          <span class="tl-period">2017 – 2019</span>
-          <span class="tl-role">스포츠 MNM</span>
-          <span class="tl-desc">스포츠 구단 브랜딩</span>
-        </li>
-        <li class="reveal">
-          <span class="tl-period">2015 – 2017</span>
-          <span class="tl-role">경남FC 프로축구단</span>
-          <span class="tl-desc">선수단 운영 매니저</span>
-        </li>
-      </ol>
-      <p class="edu reveal">울산대학교 경영학 전공 · 미국 뉴저지 교환학생 수료</p>
-    </div>
-  </section>
-
-  <section id="person" class="person">
-    <div class="wrap">
-      <h2 class="section-title reveal"><span class="num">05</span>사람, 강병무</h2>
+      <p class="act-label reveal">Life</p>
+      <h2 class="section-title reveal">삶의 결</h2>
 
       <div class="identity-grid reveal">
         <div class="identity-card">
@@ -288,23 +139,37 @@
         <ul class="writing-list">
           <li><a href="https://brunch.co.kr/@writerturtle" target="_blank" rel="noopener">아내의 생일에 떡볶이를 먹자고 했을 때</a></li>
           <li><a href="https://brunch.co.kr/@writerturtle" target="_blank" rel="noopener">마우리치오 카텔란 — 개그와 예술의 초월적 경계</a></li>
-          <li><a href="https://brunch.co.kr/@writerturtle" target="_blank" rel="noopener">예뻐야 지속가능한 친환경 브랜딩</a></li>
         </ul>
       </div>
+      <p class="more-link reveal"><a href="life.html">Life 더 보기 →</a></p>
     </div>
   </section>
 
-  <section id="contact" class="contact">
+  <!-- 6막 증거 -->
+  <section class="clients">
     <div class="wrap">
-      <h2 class="section-title reveal"><span class="num">06</span>연락</h2>
-      <p class="contact-lead reveal">브랜드의 철학이 필요하다면, 편하게 말을 걸어주세요.</p>
-      <ul class="contact-list reveal">
-        <li><span>Mail</span><a href="mailto:jeremykang13@gmail.com">jeremykang13@gmail.com</a></li>
-        <li><span>Mobile</span><a href="tel:+821047207842">+82 10-4720-7842</a></li>
-        <li><span>Instagram</span><a href="https://instagram.com/like_byungmoos_" target="_blank" rel="noopener">@like_byungmoos_</a></li>
-        <li><span>Brunch</span><a href="https://brunch.co.kr/@writerturtle" target="_blank" rel="noopener">brunch.co.kr/@writerturtle</a></li>
+      <p class="clients-label">주요 파트너사</p>
+      <ul class="clients-list">
+        <li>진로</li>
+        <li>순하리</li>
+        <li>서울관광재단</li>
+        <li>한국GM 쉐보레</li>
+        <li>외교부</li>
+        <li>방송통신위원회</li>
       </ul>
+      <p class="more-link"><a href="career.html">경력 보기 →</a></p>
     </div>
+  </section>
+
+  <!-- 7막 초대 -->
+  <section class="contact">
+    <div class="wrap">
+      <p class="act-label reveal">Contact</p>
+      <p class="contact-lead reveal">당신의 브랜드 철학을<br>함께 이야기하고 싶습니다.</p>
+      <div class="hero-cta reveal">
+        <a class="btn btn-primary" href="mailto:jeremykang13@gmail.com">이메일</a>
+        <a class="btn btn-ghost" href="contact.html">다른 연락 방법</a>
+      </div>    </div>
   </section>
 
 </main>
@@ -314,7 +179,9 @@
     <p>&copy; 2026 Kang Byungmoo. 브랜드의 철학을 사유하고 정립합니다.</p>
   </div>
 </footer>
+</div>
 
+<script src="js/sidebar.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

@@ -6,26 +6,24 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a **static site** (plain HTML/CSS/JS, no build step, no framework, no package.json) for a **personal introduction / portfolio page for 강병무 (Kang Byung-moo)**, a brand strategy planner (브랜드/콘텐츠 기획자).
 
-Structure:
-- `index.html` — single-page site, all sections (hero, 철학, 일하는 방식 tabs, 프로젝트 filterable grid, 경력 timeline, 사람/person, 연락처). Each project card is an `<a href="project.html?id=<slug>">` linking to its detail page.
-- `project.html` — reusable detail-page template shared by all 15 projects; reads `?id=<slug>` from the URL and renders that project's content client-side (title, tags, cover image, rich body, optional stat cards, prev/next pagination). Do not duplicate this file per project — add new projects to the data file instead.
-- `js/projects-data.js` — the single source of truth for all project detail content: a `PROJECTS` array of `{slug, category, catLabel, title, tags, cover, body, stats?}`. `body` is an array of blocks — `{p: "html string"}` (paragraph, inline `<strong>` allowed), `{h: "text"}` (subheading), or `{list: [...]}` (bullet list; items can be plain strings or `{text, url}` for external links). This content was transcribed from the case-study detail pages on the source Notion site (each project card there opens its own sub-page with a fuller write-up) — when 강병무 wants to edit a project's story, edit its entry here, not the HTML.
-- `js/project.js` — renders `project.html` from `PROJECTS` based on the `id` query param; also computes prev/next links from array order.
-- `css/style.css` — all styling; CSS custom properties at the top (`:root`) define the color/type tokens; detail-page-specific rules are under the "project detail page" comment block.
-- `js/main.js` — no dependencies; handles mobile nav toggle, the role tabs (일하는 방식), the project category filter, and a scroll-reveal (`IntersectionObserver`) animation. Loaded on both `index.html` and `project.html`.
-- `assets/profile-hero.png` — hero profile photo; `assets/projects/*.png` — one cover image per project card, named by a short English slug (e.g. `chevrolet-social.png`, `wego-supporters.png`). These were captured as screen recaptures from the source Notion page (Notion's image CDN uses signed URLs the browser-automation tooling blocks from direct fetch/download), so resolution is modest (~large enough for the 16:9 project-card crop and the hero's 4:3 crop). If 강병무 provides the original higher-res files later, swap them in under the same filenames.
+Structure (현재, 2026-10-18 — 자세한 내용은 `work-summary.md`):
+- 페이지 6개: `index.html`(홈), `work.html`(Philosophy & Work: 철학 → 철학적 소양 → 역할 4섹션 스크롤), `career.html`, `life.html`, `contact.html`, `project.html?id=<slug>`(상세 템플릿, 프로젝트별로 복제하지 말고 데이터 파일에 추가).
+- `js/projects-data.js` — 프로젝트 22개의 단일 데이터 원본: `{slug, category(strategy|concept|content|community), catLabel, title, tags, cover, body, stats?}`. `body` 블록은 `{p}` 문단, `{h}` 소제목, `{list}` 목록(문자열 또는 `{text,url}`), `{img, alt}` 이미지. 내용 수정은 이 파일에서만 한다.
+- `js/projects-media.js` — 프로젝트 상세 본문 사이에 끼우는 이미지·링크(`PROJECT_MEDIA[slug] = [{at, blocks}]`). `at`은 원본 `body` 블록 번호(0부터) 뒤에 삽입. 이미지 파일은 `assets/projects/media/`.
+- `js/sidebar.js` — 메뉴 데이터(`MENU`), 아이콘, 단축키 1~5, 테마 전환(자동/라이트/다크), 스크롤 따라 현재 섹션 표시. 모든 페이지 공통.
+- `js/project.js`(상세 렌더), `js/main.js`(등장 효과·메일 복사·진행 바), `css/style.css`(디자인 시스템, 구역 1~11).
+- `assets/projects/*.png` 기존 커버, `assets/projects/slides/*.jpg` 블러 처리한 장표(신규·컨셉 구현자 커버와 본문 이미지, 1280px).
 
-There is no build/lint/test tooling — it's meant to be deployed as-is (e.g. GitHub Pages, Netlify, Vercel static hosting, Cloudflare Pages).
+**내용의 구조(페이지·메뉴·순서·문구)는 디자인 작업에서 바꾸지 않는다.** 디자인 규칙은 `design-work-order.md`.
 
-### Design system
-Modern, minimal aesthetic (white/neutral-gray base, not the earlier warm-cream/serif editorial look) — chosen after reviewing a reference Korean design portfolio format the user linked (notefolio.net). Key choices baked into `css/style.css`:
-- Font: **Pretendard Variable**, loaded from jsDelivr in `index.html` (`orioncactus/pretendard`) — the standard modern Korean web font. No serif font is used anywhere; headings and body both use `--sans`, differentiated by weight (800 for display headings, 400 for body).
-- Palette tokens in `:root`: neutral white/near-black (`--bg`, `--ink`), a refined green `--accent` and a coral `--terracotta` used sparingly for badges/tags/dates, plus soft tints (`--accent-soft`) for pill backgrounds.
-- Soft blurred color-blob decorations behind the hero (`.hero::before`/`::after`, radial-gradient circles) for a contemporary touch — keep these subtle (low opacity) rather than the flat saturated shapes seen in the reference.
-- Korean typography: `body` has `word-break: keep-all` so line-wraps happen between words, not mid-syllable; prefer letting long Korean headlines wrap naturally rather than hardcoding `<br>` positions, since manual breaks fight the responsive/keep-all flow.
+### Design system (적용됨)
+- Pretendard Variable 한 가지. 제목 500, 본문 400, 한글 `word-break:keep-all`, 양수 자간 금지.
+- 토큰은 `:root`에 있고 다크는 `prefers-color-scheme`과 `[data-theme]` 두 경로로 덮어쓴다. 테마는 각 HTML `<head>`의 인라인 스크립트가 먼저 적용한다.
+- 강조색은 초록 1색, 선은 `.5px`, 그림자 없음, 모서리 10px(컨트롤)/14px(카드).
+- 모바일(≤700px)은 하단 탭바 5개. 숨길 요소는 `.side-nav a.side-sub`처럼 특이도를 맞춰야 한다.
 
 ### Running locally
-This machine has neither Python nor Node installed, so `python -m http.server` / `npx serve` won't work out of the box. To preview locally, either open `index.html` directly if the browser tooling in use supports `file://` (Chrome's automation extension does not), or spin up a minimal server, e.g. a PowerShell `System.Net.HttpListener` script serving the directory on `localhost`. If Python or Node get installed later, prefer `python -m http.server` or `npx serve` instead.
+Python 3.12가 설치되어 있다. 이 폴더에서 `python -m http.server 8765` 후 `http://localhost:8765/`. 브라우저 확장이 연결되지 않을 때는 헤드리스 Edge(`msedge.exe --headless --screenshot=...`)로 캡처할 수 있다(창 최소 폭 때문에 모바일은 iframe 390px로 확인).
 
 ## Role Claude should play
 
